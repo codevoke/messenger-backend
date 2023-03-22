@@ -5,18 +5,21 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Вход</title>
     <link rel="stylesheet" type="text/css" href='{{ url_for("static", filename="login.css") }}'>
-    <link rel="stylesheet" type="text/css" href='../static/login.css'>
-    <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Roboto" />
+    <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Nunito" />
 </head>
 <body>
     <div class="content">
-        <div class="logo-text">Cook Market</div>
+        <div class="logo-text">School chat</div>
         <form class="form" method="POST">
             <div class="form-content-wrapper">
                 <div class="h2-tip">Вход</div>
-                <input type="mail" name="email" class="input" placeholder="E-mail">   
-                <input type="password" name="password" class="input" placeholder="Пароль">
-                <input type="submit" name="submit" class="submit-btn primary-btn" value="Войти">
+                <div class="inp1">
+                    <input type="email" name="email" class="input" placeholder="E-mail" id="inp1">
+                </div>
+                <div class="inp2">
+                    <input type="password" name="password" class="input" placeholder="Пароль" id="inp2">
+                </div>
+                <input type="submit" class="submit-btn primary-btn" value="Войти">
             </div>
             <div class="footer footer-wrapper">
                 <a href="/forgot-password" class="href">Забыли пароль</a>
@@ -24,5 +27,28 @@
             </div>
         </form>
     </div>
+    <script type="text/javascript">
+        if ("{{errors|safe}}" !== "" && "{{values|safe}}" !== "") {
+            const inputs = [
+                document.getElementById("inp1"),
+                document.getElementById("inp2")
+            ];
+            const errors = {{errors|safe}}
+            const values = {{values|safe}}
+
+            for (let i in [0, 1]) {
+                let elem
+                elem = inputs[i]
+                elem.value = values[i]
+            }
+
+
+            elem = inputs[errors[0]-1]
+            elem.classList.add("incorrect-input")
+            elem_wrap = document.querySelector(".inp" + errors[0])
+            elem_wrap.classList.add("incorrect-input-wrap")
+            elem_wrap.setAttribute("data-title", errors[1])
+        }
+    </script>
 </body>
 </html>

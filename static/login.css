@@ -1,10 +1,10 @@
 :root {
-    --primary-form-background: #f3e6c9;
+    --primary-form-background: #D9D9D9;
 }
 
 body {
     margin: 0;
-    font-family: 'Roboto';
+    font-family: 'Nunito', sans-serif;
 }
 .primary-btn {
     user-select: none;
@@ -15,7 +15,8 @@ body {
     position: relative;
     width: 100vw;
     height: 100vh;
-    background: #fdeed4;
+    background: rgb(73,158,143);
+    background: linear-gradient(180deg, rgba(73,158,143,1) 50%, rgba(25,54,57,1) 50%);
     display: flex;
     justify-content: center;
     align-items: center;
@@ -23,23 +24,23 @@ body {
 
 .logo-text {
     position: absolute;
+    width: 199px;
+    height: 49px;
     left: 121px;
     top: 26px;
 
     font-style: normal;
     font-weight: 600;
-    font-size: 2em;
+    font-size: 36px;
+    line-height: 49px;
 
-    color: #EEAA10;
+    color: #193539;
 }
 .form {
     position: relative;
     width: 550px;
     height: 350px;
-    max-width: 700px;
-    max-height: 500px;
     background: var(--primary-form-background);
-    border: 1px solid #EEAA10;
     border-radius: 10px;
     display: flex;
     flex-direction: column;
@@ -75,11 +76,29 @@ body {
     font-size: 20px;
     line-height: 27px;
 }
+.incorrect-input-wrap {
+    display: flex;
+    border-radius: initial;
+}
+.incorrect-input-wrap > input {
+    outline: 2px solid #fc9797;
+}
+.incorrect-input-wrap:hover::after, .incorrect-input-wrap:has(input:focus)::after {
+    content: attr(data-title);
+    position: absolute;
+    top: inherit;
+    margin-top: 55px;
+    padding: 5px;
+    background: #fff;
+    border: 1px solid dimgray;
+    border-radius: 5px;
+    z-index: 5;
+}
 .submit-btn {
     position: relative;
     width: 200px;
     height: 49px;
-    background: #EEAA10;
+    background: #25A558;
     color: white;
     border-radius: 10px;
     font-family: 'Nunito';

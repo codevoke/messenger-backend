@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Регистрация</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='acc_start.css') }}">
+    <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Nunito" />
+</head>
+<body>
+    <div class="content">
+        <div class="logo-text">School chat</div>
+        <form class="form" method="POST"  enctype="multipart/form-data">
+            <div class="form-content-wrapper">
+
+                <div class="h2-tip">Account</div>
+
+                <div class="form-inp-wrapper">
+                    <div class="inp-file-wrap">
+                        <input type="file"
+                              id="image_uploads"
+                              name="file"
+                              accept=".jpg, .jpeg, .png"
+                              class="input-file" />
+                        <div class="inp-file" onclick="input.click()">
+                            <p>Put your<br>avatar here</p></div>
+                    </div>
+
+
+                    <div style="position: relative; height: 100%;display: flex; flex-direction: column; justify-content: space-around; ">
+                        <div class="inp1">
+                            <input type="text" name="firstname" class="input" placeholder="First Name" id="inp1">
+                        </div>
+
+                        <div class="inp2">
+                            <input type="text" name="lastname" class="input" placeholder="Last Name" id="inp2">
+                        </div>
+                    </div>
+                </div>
+                
+                <input type="submit" class="submit-btn primary-btn" value="Продолжить">
+            
+            </div>
+        </form>
+    </div>
+    <script>
+        const inputs = [document.getElementById("inp1"),
+            document.getElementById("inp2"),
+            document.getElementById("inp3")
+        ];
+        const errors = {{errors|safe}}
+        const values = {{values|safe}}
+        let elem;
+        for (let i in [0, 1, 2]) {
+            elem = inputs[i]
+            elem.value = values[i]
+        }
+        for (let error of errors) {
+            elem = document.getElementById("inp" + error[0])
+            elem.classList.add("incorrect-input")
+            elem_wrap = document.querySelector(".inp" + error[0])
+            elem_wrap.classList.add("incorrect-input-wrap")
+            elem_wrap.setAttribute("data-title", error[1])
+        }
+    </script>
+    <script type="text/javascript" src="{{ url_for('static', filename='script_acc.js') }}"></script>
+
+</body>
+</html>

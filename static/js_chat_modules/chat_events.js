@@ -1,0 +1,17 @@
+const socket = io();
+socket.on('connect', function () {
+    let id = getCookie('id')
+    let data = {
+        'id': id
+    }
+    socket.emit('connect', data)
+});
+socket.on('new_chat', function (data) {
+
+
+});
+
+socket.on('confirm_new_chat', function (){
+    return {'confirm': true};
+});
+

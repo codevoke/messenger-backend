@@ -1,0 +1,186 @@
+:root {
+	--primary-main-dark-color: #193639;
+	--primary-main-light-color: #499E8F;
+	--primary-chat-background: #404040;
+	--primary-input-border-color: #074844;
+	--primary-chatlist-active: #307569E8;
+	--primary-chatlist-hover: #4B8F83;
+	--primary-avatar-replacment-background: white;
+	--primary-chatlist-title-color: black;
+	--primary-chatlist-last-msg-color: #404040;
+	--primary-last-msg-before-color: #0044AA;
+	--primary-body-color: white;
+	--primary-fontfamily: 'Nunito', serif;
+}
+body {
+	margin: 0;
+	background: var(--primary-main-light-color);
+	font-family: var(--primary-fontfamily);
+	color: var(--primary-body-color);
+}
+
+.main-content {
+	position: relative;
+	width: 100vw;
+	height: 100vh;
+}
+.menu-bar {
+	position: relative;
+	width: 70px;
+	height: 100%;
+	background: var(--primary-main-dark-color);
+}
+.messanger {
+	position: relative;
+	width: 100%;
+	height: 100%;
+	display: flex;
+}
+.chat-list {
+	position: relative;
+	width: calc(30% - 35px);
+	height: 100%;
+	background: var(--primary-main-light-color);
+}
+.head {
+	box-sizing: border-box;
+	position: relative;
+	height: 60px;
+	width: 100%;
+	border-bottom: 1px solid #000;
+	display: flex;
+	align-items: center;
+}
+
+.chat {
+	position: relative;
+	width: calc(70% - 35px);
+	height: 100%;
+	background: var(--primary-chat-background);
+}
+.chat:empty:before {
+	display:inline-block;
+	position: relative;
+	top: 40%;
+	left: 50%;
+	transform: translateX(-50%) translateY(-50%);
+	background:dimgray;
+	padding: 10px;
+	border-radius: 15px;
+	color: white;
+	content: 'Выберите кому хотели бы написать';
+}
+.menu-btn-wrapper {
+	position: relative;
+	margin: 20px;
+	height: 19px;
+	width: 29px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+input:active {
+	outline: none;
+}
+.line-btn {
+	position: relative;
+	width: inherit;
+	height: 0;
+	border-top: 3px solid white;
+}
+.menu-btn {
+	cursor: pointer;
+	user-select: none;
+	font-size: 1.75em;
+	margin: 19px;
+}
+.menu-search {
+	display: inline-block;
+	box-sizing: border-box;
+	position: relative;
+	width: inherit;
+	font-size: 0.9rem;
+	padding-left: 0.75em;
+	border: 3px solid var(--primary-input-border-color);
+	border-radius: 2px;
+	background: var(--primary-main-light-color);
+	color: var(--primary-main-dark-color);
+	height: 40px;
+	margin: 12px 13px 12px 13px;
+}
+.menu-search::placeholder {
+	color: black;
+}
+.head::after {
+	display: block;
+	position: absolute;
+	right: 23px;
+	content: url(search-2.svg);
+	height: 22px;
+	width: 22px;
+	cursor: pointer;
+}
+
+.template {
+	position: relative;
+	width: 100%;
+	height: 60px;
+	transition: 0.1s;
+	box-sizing: border-box;
+	display: flex;
+	align-items: center;
+}
+.template:hover {
+	background: var(--primary-chatlist-hover);
+	cursor: pointer;
+	user-select: none;
+}
+.active_chat {
+	background: var(--primary-chatlist-active);
+}
+.active_chat:hover {
+	background: var(--primary-chatlist-active);
+}
+.ava {
+	position: relative;
+	min-width: 48px;
+	max-width: 48px;
+	height: 48px;
+	border-radius: 50%;
+	background:var(--primary-avatar-replacment-background);
+	margin-left: 8px;
+	margin-right: 14px;
+}
+.text-box {
+	position: relative;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+.title {
+	font-style: normal;
+	font-weight: 500;
+	font-size: 15px;
+	line-height: 20px;
+	color: var(--primary-chatlist-title-color);
+}
+.last-msg-text {
+	font-style: normal;
+	font-weight: 400;
+	font-size: 13px;
+	line-height: 18px;
+	color: var(--primary-chatlist-last-msg-color);
+	overflow: hidden;
+	position: relative;
+	max-width: 90%;
+	text-overflow: ellipsis;
+	max-height: 1em;
+}
+.last-msg-text:before {
+	font-style: normal;
+	font-weight: 400;
+	font-size: 13px;
+	line-height: 18px;
+	color: var(--primary-last-msg-before-color);
+	content: attr(data-author);
+}

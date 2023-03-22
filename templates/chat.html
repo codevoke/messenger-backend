@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='chat.css') }}">
+	<link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Nunito" />
+	<title>Chats</title>
+</head>
+<body>
+	<div class="main-content">
+		<div class="messanger">
+            <div class="menu-bar">
+                <div class="menu-btn-wrapper">
+                    <div class="line-btn"></div>
+                    <div class="line-btn"></div>
+                    <div class="line-btn"></div>
+                </div>
+            </div>
+			<div class="chat-list">
+				<div class="head">
+					<input type="text" placeholder="Поиск" class="menu-search">
+				</div>
+				<div class="template">
+					<div class="ava"></div>
+                    <div class="text-box">
+					    <div class="title">Избранное</div>
+                        <div class="last-msg-text" data-author="Вы: ">Коммутаторы, ох и уж коммутаторы</div>
+                    </div>
+				</div>
+                <div class="template">
+					<div class="ava"></div>
+                    <div class="text-box">
+					    <div class="title">Одноклассник Никита</div>
+                        <div class="last-msg-text" data-author="Никита: ">на эту вкладку направлен курсор мыши*</div>
+                    </div>
+				</div>
+                <div class="template">
+					<div class="ava"></div>
+                    <div class="text-box">
+					    <div class="title">Подруга Соня</div>
+                        <div class="last-msg-text" data-author="Гриша: ">Это окно открыто*</div>
+                    </div>
+				</div>
+			</div>
+			<div class="chat"></div>
+		</div>
+	</div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.0.1/socket.io.js" integrity="sha512-q/dWJ3kcmjBLU4Qc47E4A9kTB4m3wuTY7vkFJDTZKjTs8jhyGQnaUrxa0Ytd0ssMZhbNua9hE+E7Qv1j+DyZwA==" crossorigin="anonymous"></script>
+	<script type="text/javascript" src='../static/js_chat_modules/chat.js'></script>
+<script type="text/javascript" src='../static/js_chat_modules/chat_events.js'></script>
+</body>
+</html>

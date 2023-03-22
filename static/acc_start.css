@@ -9,9 +9,6 @@ body {
 .primary-btn {
     user-select: none;
     cursor: pointer;
-    display: flex;
-    justify-content: center;
-    align-items: center;
 }
 
 .content {
@@ -42,7 +39,7 @@ body {
 .form {
     position: relative;
     width: 500px;
-    height: 400px;
+    height: 300px;
     background: var(--primary-form-background);
     border-radius: 10px;
     display: flex;
@@ -52,7 +49,7 @@ body {
 }
 .form-content-wrapper {
     position: relative;
-    width: calc(100% - 96px);
+    width: 100%;
     top: 17px;
     height: 300px;
     margin-bottom: 17px;
@@ -66,27 +63,29 @@ body {
     font-size: 32px;
     line-height: 44px;
 }
+
 .incorrect-input-wrap {
     display: flex;
     border-radius: initial;
 }
 .incorrect-input-wrap > input {
     outline: 2px solid #fc9797;
-}.incorrect-input-wrap:after {
-    display: block;
-    content: attr(data-error-text);
-    color: red;
+}
+.incorrect-input-wrap:hover::after, .incorrect-input-wrap:has(input:focus)::after {
+    content: attr(data-title);
     position: absolute;
     top: inherit;
-     margin: 53px 5px 5px;
- }
-.incorrect-input-wrap {
-   margin-bottom: 20px;
+    margin-top: 55px;
+    padding: 5px;
+    background: #fff;
+    border: 1px solid dimgray;
+    border-radius: 5px;
+    z-index: 5;
 }
 .input {
     box-sizing: border-box;
     display: inline-flex;
-    width: 400px;
+    width: 300px;
     height: 49px;
     background: #D0CFCF;
     border: 0.5px solid #000000;
@@ -109,7 +108,33 @@ body {
     font-size: 24px;
     line-height: 33px;
     border: none;
+    margin: 1em;
 }
+
+.input-file {
+    display: none;
+}
+.inp-file {
+    position: relative;
+    width: 100px;
+    height: 100px;
+    border: 2px dashed grey;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+}
+
+.form-inp-wrapper {
+    position: relative;
+    width: 90%;
+    height: 125px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
 .footer {
     position: relative;
     height: 40px;
