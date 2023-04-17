@@ -40,12 +40,12 @@ def reg():
         if request.form.get("email"):
             email, password = request.form.values()
             result = db.registry(email, password)
-            # result successful:bool , id, token
+            print("result")
             if True in result:
-                print(result[1], result[2])
                 response = make_response(render_template('acc_start.html'))
                 response.set_cookie('id', str(result[1]), max_age=60 ** 2 * 24)
                 response.set_cookie('token', result[2], max_age=60 ** 2 * 24)
+                print("resp-> ", response)
                 return response
             else:
                 # return values and errors

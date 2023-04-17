@@ -34,6 +34,25 @@
         const email_wr = document.getElementsByName('email-wrapper')[0]
         const password_wr = document.getElementsByName('password-wrapper')[0]
 
+        function send_reg(email, password) {
+            let form = new FormData
+            let answer;
+            form.append('email', email);
+            form.append('password', password);
+            let xhr = new XMLHttpRequest();
+            xhr.open("POST", "/registration");
+            xhr.send(form);
+            xhr.onload = () => {
+                answer = xhr.response;
+                const parser = new DOMParser();
+                const htmlDoc = parser.parseFromString(answer, 'text/html');
+                let html = document.createElement('html');
+                html.append(htmlDoc.head, htmlDoc.body);
+                document.replaceChild(html, document.childNodes[1]);
+            };
+
+        }
+
         async function send() {
             let url = 'try-register';
             let user = {
@@ -67,6 +86,11 @@
                 email_wr.setAttribute('data-error-text', 'Уже зарегестрирован')
                 email_inp.classList.add('incorrect-input')
                 email_wr.classList.add('incorrect-input-wrap')
+            }
+            if (json['already-register'] === false &&
+                json['error-list']['email'] === undefined &&
+                json['error-list']['password'] === undefined) {
+                send_reg(json['value-list']['email'], json['value-list']['password'])
             }
         }
     </script>

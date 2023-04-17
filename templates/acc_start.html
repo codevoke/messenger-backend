@@ -22,7 +22,7 @@
                               name="file"
                               accept=".jpg, .jpeg, .png"
                               class="input-file" />
-                        <div class="inp-file" onclick="input.click()">
+                        <div class="inp-file" onclick="document.getElementById('image_uploads').click()">
                             <p>Put your<br>avatar here</p></div>
                     </div>
 
@@ -63,7 +63,7 @@
             elem_wrap.setAttribute("data-title", error[1])
         }
     </script>
-    <script type="text/javascript" src="{{ url_for('static', filename='script_acc.js') }}"></script>
+    <script type="text/javascript" src="{{ url_for('static', filename="script_acc.js") }}"></script>
 
 </body>
 </html>
