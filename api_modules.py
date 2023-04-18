@@ -14,13 +14,21 @@ class Api:
         self.json_schema = JSONSchema()
 
     def register_method(self, method: str, handler) -> None:
-        self.command_handlers[method] = handler
+        self.method_handlers[method] = handler
 
-    def method_calling(self, data: Dict or json):
+    def method_calling(self, method_name: str, data: Dict or json):
+        if method_name not in self.method_handlers.keys():
+            self.json_schema.generate_error(1)
         id = data['id']
         token = data['token']
         if not check_auth(id, token):
-            return self.json_schema.generate_error()
+            return self.json_schema.generate_error(2)
+        method_handler = self.method_handlers.get(method_name)
+        try:
+            response = method_handler(data)
+            return self.json_schema.generate_answer(response)
+        except BaseException:
+            return self.json_schema.generate_error(0)
 
 
     def method(self, method_name: str):
