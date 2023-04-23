@@ -14,14 +14,15 @@ class JSONSchema:
 
     def generate_error(self,
                        error_code: int,
-                       request_params: Dict[str, str],
+                       request_params: Dict[str, str] = None,
                        error_description_message: str = None) -> Dict:
         json_request_params = []
-        for param in request_params.keys():
-            json_request_params.append({
-                "key": param,
-                "value": request_params[param]
-            })
+        if request_params:
+            for param in request_params.keys():
+                json_request_params.append({
+                    "key": param,
+                    "value": request_params[param]
+                })
 
         error = {
             "error":

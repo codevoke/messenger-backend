@@ -3,6 +3,9 @@ import db
 from flask import Flask, render_template, request
 from flask_socketio import SocketIO, emit, join_room, leave_room, rooms
 
+from api import ServerApi as Api
+
+
 app = Flask(__name__, static_folder='static', template_folder='templates')
 app.config['SECRET_KEY'] = 'secret!'
 socketio = SocketIO(app)
@@ -86,6 +89,15 @@ def chat():
         return response
     # ну явно не просто рендер темплэйт
     return render_template('chat.html')
+
+
+@app.route('/api/<method_name>', methods=['POST'])
+def api(method_name):
+    data = request.json
+    print(data)
+    response = Api.method_calling(method_name, data)
+    print(response)
+    return response
 
 
 def validate_user(user_request):
